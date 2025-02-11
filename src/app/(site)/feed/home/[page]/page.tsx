@@ -76,6 +76,8 @@ export default async function FeedHome({
     notFound();
   }
 
+  console.log(feedUsers);
+
   return (
     <div>
       <h1 className="feed-title">Homepage</h1>
