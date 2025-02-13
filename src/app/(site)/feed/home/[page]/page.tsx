@@ -26,10 +26,7 @@ async function getFeedUsers(
 
   const usersThroughApps = await prisma.application.findMany({
     where: {
-      approved: true,
-      user: {
-        bio: { not: null }
-      }
+      approved: true
     },
     include: {
       user: {
