@@ -24,6 +24,27 @@ async function getFeedUsers(
     }
   });
 
+  const usersThroughApps = await prisma.application.findMany({
+    where: {
+      approved: true,
+      user: {
+        bio: { not: null }
+      }
+    },
+    include: {
+      user: {
+        select: {
+          id: true,
+          isAdmin: true,
+          name: true,
+          bio: true,
+          discordId: true
+        }
+      }
+    },
+  });
+
+  console.log(usersThroughApps);
   console.log(skip, totalFeedUsers);
 
   // If out of range, return an empty array
